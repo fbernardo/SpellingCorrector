@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'SpellingCorrector' target in the 'SpellingCorrector' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+
+#endif

@@ -25,8 +25,8 @@
     [corrector parseFile:^(BOOL success){
         for (NSString *key in tests) {
             NSArray *array = [corrector correctString:key];
-            BOOL success = [array containsObject:tests[key]];
-            NSLog(@"SUCESS: %@ | Word: %@ | Sugestions: %@",success ? @"YES" : @"NO", key, array);
+            BOOL s = [array containsObject:tests[key]];
+            NSLog(@"SUCESS: %@ | Word: %@ | Sugestions: %@", s ? @"YES" : @"NO", key, array);
         }
     } invalidateCache:NO];
 

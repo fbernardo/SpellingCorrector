@@ -65,7 +65,7 @@
             unsigned long long int remain = fileSize - [handle offsetInFile];
 
             @try {
-                data = [handle readDataOfLength:MIN(kSpellingCorrectorBufferSize, remain)];
+                data = [handle readDataOfLength:(NSUInteger) MIN(kSpellingCorrectorBufferSize, remain)];
             } @catch (NSException *exception) {
                 completionBlock(NO);
                 [handle closeFile];
@@ -75,7 +75,7 @@
             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSArray *stringComponents = [string componentsSeparatedByCharactersInSet:[[NSCharacterSet letterCharacterSet] invertedSet]];
 
-            int numberOfComponents = [stringComponents count];
+            NSUInteger numberOfComponents = [stringComponents count];
             if (kSpellingCorrectorBufferSize < remain) {
                 //We're not at EOF yet
                 numberOfComponents--;

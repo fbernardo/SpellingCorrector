@@ -21,12 +21,12 @@
         @"tha" : @"the"
     };
 
-    SpellingCorrector *corrector = [[SpellingCorrector alloc] initWithWordsFile:[[NSBundle mainBundle] pathForResource:@"big" ofType:@"txt"]];
+    SpellingCorrector *corrector = [[SpellingCorrector alloc] initWithWordsFilePath:[[NSBundle mainBundle] pathForResource:@"big" ofType:@"txt"]];
     [corrector parseFile:^(BOOL success){
         for (NSString *key in tests) {
             NSArray *array = [corrector correctString:key];
             BOOL s = [array containsObject:tests[key]];
-            NSLog(@"SUCESS: %@ | Word: %@ | Sugestions: %@", s ? @"YES" : @"NO", key, array);
+            NSLog(@"SUCCESS: %@ | Word: %@ | Suggestions: %@", s ? @"YES" : @"NO", key, array);
         }
     } invalidateCache:NO];
 

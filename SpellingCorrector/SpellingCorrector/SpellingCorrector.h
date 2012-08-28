@@ -12,7 +12,7 @@ typedef void (^SpellingCorrectorCompletionBlock)(BOOL);
 @interface SpellingCorrector : NSObject
 
 //Init with a big text file
-- (id)initWithWordsFile:(NSString *)path;
+- (id)initWithWordsFilePath:(NSString *)path;
 
 //Non-blocking method to parse the words file,
 //the completion block might be executed in the calling thread if we have cache

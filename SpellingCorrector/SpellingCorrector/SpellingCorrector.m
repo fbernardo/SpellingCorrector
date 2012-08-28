@@ -10,20 +10,20 @@
 #define kSpellingCorrectorCacheFileName @"spellingCorrector.cache"
 
 @interface SpellingCorrector ()
-@property (nonatomic, retain) NSString *textFilePath;
 @property (nonatomic, retain) NSCountedSet *countedSet;
 @property (nonatomic, retain) NSLock *countedSetLock;
+@property (nonatomic, retain) NSString *filePath;
 @end
 
 @implementation SpellingCorrector
-@synthesize textFilePath = _textFilePath;
 @synthesize countedSet = _countedSet;
 @synthesize countedSetLock = _countedSetLock;
+@synthesize filePath = _filePath;
 
 
 #pragma mark - Init/Dealloc
 
-- (id)initWithWordsFile:(NSString *)path {
+- (id)initWithWordsFilePath:(NSString *)path {
     if (!path) {
         [NSException raise:NSInvalidArgumentException format:@"path is nil"];
     }
@@ -32,7 +32,7 @@
     if (self) {
         self.countedSet = [NSCountedSet set];
         self.countedSetLock = [[NSLock alloc] init];
-        self.textFilePath = path;
+        self.filePath = path;
     }
     return self;
 }
@@ -53,7 +53,7 @@
         return;
     }
     
-    NSString *path = [self.textFilePath copy];
+    NSString *path = [self.filePath copy];
     unsigned long long int fileSize = [[[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil] fileSize];
 
     
